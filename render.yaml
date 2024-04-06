@@ -1,0 +1,22 @@
+services:
+- type: pserv
+  name: alist
+  plan: individual
+  env: docker
+  autoDeploy: false
+  disk:
+    name: alist
+    mountPath: /opt/alist/data
+    sizeGB: 2
+  envVars:
+  - fromGroup: alist
+
+envVarGroups:
+- name: alist
+  envVars:
+  - key: PUID
+    value: 0
+  - key: PGID
+    value: 0
+  - key: UMASK
+    value: 022
